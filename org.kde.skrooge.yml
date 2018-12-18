@@ -19,7 +19,8 @@ cleanup:
   - /lib/*.a
   - /lib/*.la
   - /share/man
-
+cleanup-commands: # https://github.com/flatpak/flatpak/issues/1082
+  - rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}
 modules:
 
   - name: grantlee
