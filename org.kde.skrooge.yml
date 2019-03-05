@@ -1,9 +1,9 @@
 id: org.kde.skrooge
 runtime: org.kde.Platform
-runtime-version: '5.11'
+runtime-version: '5.12'
 sdk: org.kde.Sdk
 base: io.qt.qtwebkit.BaseApp
-base-version: '5.11'
+base-version: '5.12'
 command: skrooge
 rename-icon: skrooge
 copy-icon: true
@@ -32,6 +32,18 @@ modules:
         url: https://github.com/steveire/grantlee/archive/v5.1.0.tar.gz
         sha256: 3836572fe5e49d28a1d99186c6d96f88ff839644b4bc77b73b6d8208f6ccc9d1
 
+  - name: tcl
+    subdir: unix
+    build-options:
+      no-debuginfo: true
+    cleanup:
+      - /bin
+      - /man
+    sources:
+      - type: archive
+        url: https://downloads.sourceforge.net/project/tcl/Tcl/8.6.8/tcl8.6.8-src.tar.gz
+        sha256: c43cb0c1518ce42b00e7c8f6eaddd5195c53a98f94adc717234a65cbcfd3f96a
+
   - name: sqlcipher
     rm-configure: true
     config-opts:
@@ -43,11 +55,14 @@ modules:
         LDFLAGS: -lcrypto
     sources:
       - type: archive
-        url: https://github.com/sqlcipher/sqlcipher/archive/v3.4.2.tar.gz
-        sha256: 69897a5167f34e8a84c7069f1b283aba88cdfa8ec183165c4a5da2c816cfaadb
+        url: https://github.com/sqlcipher/sqlcipher/archive/v4.0.1.tar.gz
+        sha256: 2f803017378c7479cb791be59b7bad8392a15acddbcc094e4433581fe421f4ca
+      - type: shell
+        commands:
+          - cp -p /usr/share/automake-*/config.{sub,guess} .
       - type: script
         dest-filename: autogen.sh
-        commands: 
+        commands:
           - AUTOMAKE="automake --foreign" autoreconf -vfi
 
   - name: qca
@@ -59,6 +74,8 @@ modules:
       - type: archive
         url: https://download.kde.org/stable/qca/2.1.3/src/qca-2.1.3.tar.xz
         sha256: 003fd86a32421057a03b18a8168db52e2940978f9db5ebbb6a08882f8ab1e353
+      - type: patch
+        path: patches/qca-openssl-1.1.patch
 
   - name: skrooge
     buildsystem: cmake-ninja
@@ -68,5 +85,5 @@ modules:
       - -DQt5WebKitWidgets_DIR=/app/lib/cmake/Qt5WebKitWidgets
     sources:
       - type: archive
-        url: https://download.kde.org/stable/skrooge/skrooge-2.17.0.tar.xz
-        sha256: 19f2d7939b0333a95a129d110c11514f07a06f39b1ec08b42b5f43b6145b036d
+        url: https://download.kde.org/stable/skrooge/skrooge-2.18.0.tar.xz
+        sha256: 4671dfe736d92c2de51a872b49bfbdc251e7e869b5672b6546b85aca4409f303
