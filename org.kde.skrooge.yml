@@ -76,7 +76,13 @@ modules:
         sha256: 003fd86a32421057a03b18a8168db52e2940978f9db5ebbb6a08882f8ab1e353
       - type: patch
         path: patches/qca-openssl-1.1.patch
-
+        
+  - name: libofx
+    sources:
+      - type: archive
+        url: https://github.com/libofx/libofx/archive/0.9.14.tar.gz
+        sha256: 85a732efe3026e96fe1cf694ebdcf5d2c3b67adba85b9019abac44e7c43d8ce5
+        
   - name: skrooge
     buildsystem: cmake-ninja
     config-opts:
