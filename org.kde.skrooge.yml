@@ -63,7 +63,7 @@ modules:
       - type: script
         dest-filename: autogen.sh
         commands:
-          - AUTOMAKE="automake --foreign" autoreconf -vfi
+          - AUTOMAKE=automake --foreign autoreconf -vfi
 
   - name: qca
     buildsystem: cmake-ninja
@@ -76,12 +76,42 @@ modules:
         sha256: 003fd86a32421057a03b18a8168db52e2940978f9db5ebbb6a08882f8ab1e353
       - type: patch
         path: patches/qca-openssl-1.1.patch
-        
+
   - name: libofx
+    no-parallel-make: true
+    config-opts:
+      - --with-opensp-includes=/app/include/OpenSP
+      - --with-opensp-libs=/lib
     sources:
       - type: archive
         url: https://github.com/libofx/libofx/archive/0.9.14.tar.gz
         sha256: 85a732efe3026e96fe1cf694ebdcf5d2c3b67adba85b9019abac44e7c43d8ce5
+    modules:
+      - name: opensp
+        rm-configure: true
+        config-opts:
+          - --disable-doc-build
+        sources:
+          - type: archive
+            url: https://downloads.sourceforge.net/project/openjade/opensp/1.5.2/OpenSP-1.5.2.tar.gz
+            sha256: 57f4898498a368918b0d49c826aa434bb5b703d2c3b169beb348016ab25617ce
+          - type: script
+            dest-filename: autogen.sh
+            commands: 
+              - autoreconf -vfi
+
+      - name: gengetopt
+        rm-configure: true
+        sources: 
+          - type: archive
+            url: https://ftp.gnu.org/gnu/gengetopt/gengetopt-2.22.6.tar.gz
+            sha256: 30b05a88604d71ef2a42a2ef26cd26df242b41f5b011ad03083143a31d9b01f7
+          - type: patch
+            path: patches/org.kde.skrooge_makefile.patch
+          - type: script
+            dest-filename: autogen.sh
+            commands: 
+              - autoreconf -vfi
         
   - name: skrooge
     buildsystem: cmake-ninja
