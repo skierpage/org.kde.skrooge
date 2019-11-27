@@ -1,0 +1,196 @@
+{
+   "id": "org.kde.skrooge",
+   "default-branch": "stable",
+   "runtime": "org.kde.Platform",
+   "runtime-version": "5.12",
+   "sdk": "org.kde.Sdk",
+   "base": "io.qt.qtwebkit.BaseApp",
+   "base-version": "5.12",
+   "command": "skrooge",
+   "rename-icon": "skrooge",
+   "copy-icon": true,
+   "cleanup": [
+      "/include",
+      "/lib/pkgconfig",
+      "/lib/*.a",
+      "/lib/*.la",
+      "/share/man"
+   ],
+   "cleanup-commands": [
+      /* flatpak-builder issue #233 */
+      "rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}"
+   ],
+   "finish-args": [
+      "--share=ipc",
+      "--socket=x11",
+      "--socket=wayland",
+      "--device=dri",
+      "--filesystem=host"
+   ],
+   "modules": [
+      {
+         "name": "tcl",
+         "subdir": "unix",
+         "build-options": {
+            "no-debuginfo": true
+         },
+         "cleanup": [
+            "/bin",
+            "/man"
+         ],
+         "sources": [
+            {
+               "type": "archive",
+               "url": "https://downloads.sourceforge.net/project/tcl/Tcl/8.6.8/tcl8.6.8-src.tar.gz",
+               "sha256": "c43cb0c1518ce42b00e7c8f6eaddd5195c53a98f94adc717234a65cbcfd3f96a"
+            }
+         ]
+      },
+      {
+         "name": "sqlcipher",
+         "rm-configure": true,
+         "config-opts": [
+            "--enable-tempstore=yes",
+            "--disable-tcl"
+         ],
+         "build-options": {
+            "env": {
+               "CFLAGS": "-g -O2 -DSQLITE_HAS_CODEC",
+               "LDFLAGS": "-lcrypto"
+            }
+         },
+         "sources": [
+            {
+               "type": "archive",
+               "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.0.1.tar.gz",
+               "sha256": "2f803017378c7479cb791be59b7bad8392a15acddbcc094e4433581fe421f4ca"
+            },
+            {
+               "type": "shell",
+               "commands": [
+                  "cp -p /usr/share/automake-*/config.{sub,guess} ."
+               ]
+            },
+            {
+               "type": "script",
+               "dest-filename": "autogen.sh",
+               "commands": [
+                  "AUTOMAKE=\"automake --foreign\" autoreconf -vfi"
+               ]
+            }
+         ]
+      },
+      {
+         "config-opts": [
+            "-DQT4_BUILD=OFF",
+            "-DQCA_SUFFIX=qt5",
+            "-DENABLE_TESTING=OFF",
+            "-DCMAKE_INSTALL_LIBDIR=lib"
+         ],
+         "name": "qca",
+         "buildsystem": "cmake-ninja",
+         "sources": [
+            {
+               "type": "archive",
+               "url": "https://download.kde.org/stable/qca/2.2.1/qca-2.2.1.tar.xz",
+               "sha256": "d716d2d8e3ed8d95bbdb061f03081d7d032206f746a30a4d29d72196f50e7b02"
+            }
+         ]
+      },
+      {
+         "name": "grantlee",
+         "buildsystem": "cmake-ninja",
+         "sources": [
+            {
+               "type": "archive",
+               "url": "https://github.com/steveire/grantlee/archive/v5.1.0.tar.gz",
+               "sha256": "3836572fe5e49d28a1d99186c6d96f88ff839644b4bc77b73b6d8208f6ccc9d1"
+            }
+         ]
+      },
+      {
+         "name": "opensp",
+         "rm-configure": true,
+         "config-opts": [
+            "--disable-doc-build"
+         ],
+         "sources": [
+            {
+               "type": "archive",
+               "url": "https://downloads.sourceforge.net/project/openjade/opensp/1.5.2/OpenSP-1.5.2.tar.gz",
+               "sha256": "57f4898498a368918b0d49c826aa434bb5b703d2c3b169beb348016ab25617ce"
+            },
+            {
+               "type": "script",
+               "dest-filename": "autogen.sh",
+               "commands": [
+                  "autoreconf -vfi"
+               ]
+            }
+         ]
+      },
+      {
+         "name": "gengetopt",
+         "config-opts": [
+            "--prefix=/app"
+         ],
+         "rm-configure": true,
+         "sources": [
+            {
+               "type": "archive",
+               "url": "https://ftp.gnu.org/gnu/gengetopt/gengetopt-2.22.6.tar.gz",
+               "sha256": "30b05a88604d71ef2a42a2ef26cd26df242b41f5b011ad03083143a31d9b01f7"
+            },
+            {
+               "type": "patch",
+               "path": "org.kde.skrooge_makefile.patch"
+            },
+            {
+               "type": "script",
+               "dest-filename": "autogen.sh",
+               "commands": [
+                  "autoreconf -vfi"
+               ]
+            }
+         ]
+      },
+      {
+         "name": "libofx",
+         "no-parallel-make": true,
+         "config-opts": [
+            "--with-opensp-includes=/app/include/OpenSP",
+            "--with-opensp-libs=/lib"
+         ],
+         "sources": [
+            {
+               "type": "archive",
+               "url": "https://github.com/libofx/libofx/archive/0.9.15.tar.gz",
+               "sha256": "74a9370da560526424ab62d79f7301f86620a8566c3f38cfc4684e63a4aac155"
+            }
+         ]
+      },
+      {
+         "name": "skrooge",
+         "buildsystem": "cmake-ninja",
+         "config-opts": [
+            "-DENABLE_TESTING=OFF",
+            "-DSKG_BUILD_TEST=OFF",
+            "-DSKG_DESIGNER=OFF",
+            "-DQt5WebKit_DIR=/app/lib/cmake/Qt5WebKit/",
+            "-DQt5WebKitWidgets_DIR=/app/lib/cmake/Qt5WebKitWidgets/"
+         ],
+         "builddir": true,
+         "sources": [
+            {
+               "type": "archive",
+               "url": "https://download.kde.org/stable/skrooge/skrooge-2.20.0.tar.xz",
+               "sha256": "3c58c54ad048b03608fde0b794de0cd3a83d0b5bd43c1d033c5dc8739f755365"
+            },
+            {
+               "type": "patch",
+               "path": "skrooge-qt-fix.patch"
+            }
+         ]
+      }
+   ]
+}
