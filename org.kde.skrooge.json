@@ -188,7 +188,10 @@
             },
             {
                "type": "patch",
-               "path": "skrooge-qt-fix.patch"
+               "paths": [
+                  "skrooge-qt-fix.patch",
+                  "skrooge-2.20-appdata.patch"
+               ]
             }
          ]
       }
