@@ -183,16 +183,15 @@
          "sources": [
             {
                "type": "archive",
-               "url": "https://download.kde.org/stable/skrooge/skrooge-2.20.0.tar.xz",
-               "sha256": "3c58c54ad048b03608fde0b794de0cd3a83d0b5bd43c1d033c5dc8739f755365"
+               "url": "https://download.kde.org/stable/skrooge/skrooge-2.21.1.tar.xz",
+               "sha256": "686d256fde2af4cd33afa204270d0252b2b62225cff457725f7f7976e2286953"
             },
             {
-               "type": "patch",
-               "paths": [
-                  "skrooge-qt-fix.patch",
-                  "skrooge-2.20-appdata.patch"
+               "type": "shell",
+               "commands": [
+                   "sed -i '430i <release version=\"2.21.1\" date=\"2019-12-01\"/>' skrooge/org.kde.skrooge.appdata.xml"
                ]
-            }
+           }
          ]
       }
    ]
