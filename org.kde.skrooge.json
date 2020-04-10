@@ -184,13 +184,13 @@
          "sources": [
             {
                "type": "archive",
-               "url": "https://download.kde.org/stable/skrooge/skrooge-2.21.1.tar.xz",
-               "sha256": "686d256fde2af4cd33afa204270d0252b2b62225cff457725f7f7976e2286953"
+               "url": "https://download.kde.org/stable/skrooge/skrooge-2.22.1.tar.xz",
+               "sha256": "1098e18cf65d750ada207b37059bc251632cfb0bf976ad607bec442798e59ba4"
             },
             {
                "type": "shell",
                "commands": [
-                   "sed -i '430i <release version=\"2.21.1\" date=\"2019-12-01\"/>' skrooge/org.kde.skrooge.appdata.xml"
+                   "sed -i '456i <release version=\"2.22.1\" date=\"2020-04-09\"/>' skrooge/org.kde.skrooge.appdata.xml"
                ]
            }
          ]
