@@ -63,8 +63,8 @@
          "sources": [
             {
                "type": "archive",
-               "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.0.1.tar.gz",
-               "sha256": "2f803017378c7479cb791be59b7bad8392a15acddbcc094e4433581fe421f4ca"
+               "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.3.0.tar.gz",
+               "sha256": "fccb37e440ada898902b294d02cde7af9e8706b185d77ed9f6f4d5b18b4c305f"
             },
             {
                "type": "shell",
@@ -93,8 +93,8 @@
          "sources": [
             {
                "type": "archive",
-               "url": "https://download.kde.org/stable/qca/2.2.1/qca-2.2.1.tar.xz",
-               "sha256": "d716d2d8e3ed8d95bbdb061f03081d7d032206f746a30a4d29d72196f50e7b02"
+               "url": "https://download.kde.org/stable/qca/2.3.0/qca-2.3.0.tar.xz",
+               "sha256": "1d68ef41a1b61dc9786beb923a68902a6276a77cced5e5ea7ff985ef113932d7"
             }
          ]
       },
