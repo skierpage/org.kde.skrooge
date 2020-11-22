@@ -17,8 +17,7 @@
       "/share/man"
    ],
    "cleanup-commands": [
-      /* flatpak-builder issue #233 */
-      "rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}"
+      "/app/cleanup-BaseApp.sh"
    ],
    "finish-args": [
       "--share=ipc",
