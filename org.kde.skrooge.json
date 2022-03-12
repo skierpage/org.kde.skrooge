@@ -1,239 +1,239 @@
 {
-   "id": "org.kde.skrooge",
-   "default-branch": "stable",
-   "runtime": "org.kde.Platform",
-   "runtime-version": "5.15",
-   "sdk": "org.kde.Sdk",
-   "base": "io.qt.qtwebkit.BaseApp",
-   "base-version": "5.15",
-   "command": "skrooge",
-   "rename-icon": "skrooge",
-   "copy-icon": true,
-   "cleanup": [
-      "/include",
-      "/lib/pkgconfig",
-      "/lib/*.a",
-      "/lib/*.la",
-      "/share/man"
-   ],
-   "cleanup-commands": [
-      "/app/cleanup-BaseApp.sh"
-   ],
-   "finish-args": [
-      "--share=ipc",
-      "--socket=x11",
-      "--socket=wayland",
-      "--socket=pulseaudio",
-      "--device=dri",
-      "--filesystem=host"
-   ],
-   "modules": [
-      {
-         "name": "tcl",
-         "subdir": "unix",
-         "build-options": {
-            "no-debuginfo": true
-         },
-         "cleanup": [
-            "/bin",
-            "/man"
-         ],
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://downloads.sourceforge.net/project/tcl/Tcl/8.6.8/tcl8.6.8-src.tar.gz",
-               "sha256": "c43cb0c1518ce42b00e7c8f6eaddd5195c53a98f94adc717234a65cbcfd3f96a",
-               "x-checker-data": {
-						"type": "anitya",
-						"project-id": 4941,
-						"stable-only": true,
-						"url-template": "https://downloads.sourceforge.net/project/tcl/Tcl/$version/tcl$version-src.tar.gz"
-					}
-            }
-         ]
-      },
-      {
-         "name": "sqlcipher",
-         "rm-configure": true,
-         "config-opts": [
-            "--enable-tempstore=yes",
-            "--disable-tcl"
-         ],
-         "build-options": {
-            "env": {
-               "CFLAGS": "-g -O2 -DSQLITE_HAS_CODEC",
-               "LDFLAGS": "-lcrypto"
-            }
-         },
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.3.0.tar.gz",
-               "sha256": "fccb37e440ada898902b294d02cde7af9e8706b185d77ed9f6f4d5b18b4c305f",
-               "x-checker-data": {
-						"type": "anitya",
-						"project-id": 11213,
-						"stable-only": true,
-						"url-template": "https://github.com/sqlcipher/sqlcipher/archive/v$version.tar.gz"
-					}
+    "id": "org.kde.skrooge",
+    "default-branch": "stable",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15",
+    "sdk": "org.kde.Sdk",
+    "base": "io.qt.qtwebkit.BaseApp",
+    "base-version": "5.15",
+    "command": "skrooge",
+    "rename-icon": "skrooge",
+    "copy-icon": true,
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/lib/*.a",
+        "/lib/*.la",
+        "/share/man"
+    ],
+    "cleanup-commands": [
+        "/app/cleanup-BaseApp.sh"
+    ],
+    "finish-args": [
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--device=dri",
+        "--filesystem=host"
+    ],
+    "modules": [
+        {
+            "name": "tcl",
+            "subdir": "unix",
+            "build-options": {
+                "no-debuginfo": true
             },
-            {
-               "type": "shell",
-               "commands": [
-                  "cp -p /usr/share/automake-*/config.{sub,guess} ."
-               ]
+            "cleanup": [
+                "/bin",
+                "/man"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://downloads.sourceforge.net/project/tcl/Tcl/8.6.12/tcl8.6.12-src.tar.gz",
+                    "sha256": "26c995dd0f167e48b11961d891ee555f680c175f7173ff8cb829f4ebcde4c1a6",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 4941,
+                        "stable-only": true,
+                        "url-template": "https://downloads.sourceforge.net/project/tcl/Tcl/$version/tcl$version-src.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "sqlcipher",
+            "rm-configure": true,
+            "config-opts": [
+                "--enable-tempstore=yes",
+                "--disable-tcl"
+            ],
+            "build-options": {
+                "env": {
+                    "CFLAGS": "-g -O2 -DSQLITE_HAS_CODEC",
+                    "LDFLAGS": "-lcrypto"
+                }
             },
-            {
-               "type": "script",
-               "dest-filename": "autogen.sh",
-               "commands": [
-                  "AUTOMAKE=\"automake --foreign\" autoreconf -vfi"
-               ]
-            }
-         ]
-      },
-      {
-         "config-opts": [
-            "-DQT4_BUILD=OFF",
-            "-DQCA_SUFFIX=qt5",
-            "-DENABLE_TESTING=OFF",
-            "-DCMAKE_INSTALL_LIBDIR=lib"
-         ],
-         "name": "qca",
-         "buildsystem": "cmake-ninja",
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://download.kde.org/stable/qca/2.3.4/qca-2.3.4.tar.xz",
-               "sha256": "6b695881a7e3fd95f73aaee6eaeab96f6ad17e515e9c2b3d4b3272d7862ff5c4",
-               "x-checker-data": {
-                  "type": "anitya",
-                  "project-id": 13606,
-                  "stable-only": true,
-                  "url-template": "https://download.kde.org/stable/qca/$version/qca-$version.tar.xz"
-              }
-            }
-         ]
-      },
-      {
-         "name": "grantlee",
-         "buildsystem": "cmake-ninja",
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://github.com/steveire/grantlee/archive/v5.2.0.tar.gz",
-               "sha256": "139acee5746b957bdf1327ec0d97c604d4c0b9be42aec5d584297cb5ed6a990a",
-               "x-checker-data": {
-                  "type": "anitya",
-                  "project-id": 21448,
-                  "stable-only": true,
-                  "url-template": "https://github.com/steveire/grantlee/archive/v$version.tar.gz"
-              }
-            }
-         ]
-      },
-      {
-         "name": "opensp",
-         "rm-configure": true,
-         "config-opts": [
-            "--disable-doc-build"
-         ],
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://downloads.sourceforge.net/project/openjade/opensp/1.5.2/OpenSP-1.5.2.tar.gz",
-               "sha256": "57f4898498a368918b0d49c826aa434bb5b703d2c3b169beb348016ab25617ce",
-               "x-checker-data": {
-                  "type": "anitya",
-                  "project-id": 13231,
-                  "stable-only": true,
-                  "url-template": "https://downloads.sourceforge.net/project/openjade/opensp/$version/OpenSP-$version.tar.gz"
-              }
-            },
-            {
-               "type": "script",
-               "dest-filename": "autogen.sh",
-               "commands": [
-                  "autoreconf -vfi"
-               ]
-            }
-         ]
-      },
-      {
-         "name": "gengetopt",
-         "rm-configure": true,
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://ftp.gnu.org/gnu/gengetopt/gengetopt-2.23.tar.xz",
-               "sha256": "b941aec9011864978dd7fdeb052b1943535824169d2aa2b0e7eae9ab807584ac",
-               "x-checker-data": {
-                  "type": "anitya",
-                  "project-id": 892,
-                  "stable-only": true,
-                  "url-template": "https://ftp.gnu.org/gnu/gengetopt/gengetopt-$version.tar.xz"
-              }
-            },
-            {
-               "type": "script",
-               "dest-filename": "autogen.sh",
-               "commands": [
-                  "autoreconf -vfi"
-               ]
-            }
-         ]
-      },
-      {
-         "name": "libofx",
-         "no-parallel-make": true,
-         "config-opts": [
-            "--with-opensp-includes=/app/include/OpenSP",
-            "--with-opensp-libs=/lib"
-         ],
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://github.com/libofx/libofx/archive/0.9.15.tar.gz",
-               "sha256": "74a9370da560526424ab62d79f7301f86620a8566c3f38cfc4684e63a4aac155",
-               "x-checker-data": {
-                  "type": "anitya",
-                  "project-id": 7309,
-                  "stable-only": true,
-                  "url-template": "https://github.com/libofx/libofx/archive/$version.tar.gz"
-              }
-            }
-         ]
-      },
-      {
-         "name": "skrooge",
-         "buildsystem": "cmake-ninja",
-         "config-opts": [
-            "-DENABLE_TESTING=OFF",
-            "-DSKG_BUILD_TEST=OFF",
-            "-DSKG_DESIGNER=OFF",
-            "-DQt5WebKit_DIR=/app/lib/cmake/Qt5WebKit/",
-            "-DQt5WebKitWidgets_DIR=/app/lib/cmake/Qt5WebKitWidgets/"
-         ],
-         "builddir": true,
-         "sources": [
-            {
-               "type": "archive",
-               "url": "https://download.kde.org/stable/skrooge/skrooge-2.24.6.tar.xz",
-               "sha256": "0d17889bd95cab48fbeb5c164e926eec79df116cfd42c446814b7255a5c5b3a0",
-               "x-checker-data": {
-                  "type": "anitya",
-                  "project-id": 4826,
-                  "stable-only": true,
-                  "url-template": "https://download.kde.org/stable/skrooge/skrooge-$version.tar.xz"
-              }
-            },
-            {
-               "type": "shell",
-               "commands": [
-                   "sed -i '517i <release version=\"2.24.6\" date=\"2020-12-05\"/>' skrooge/org.kde.skrooge.appdata.xml"
-               ]
-           }
-         ]
-      }
-   ]
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.5.1.tar.gz",
+                    "sha256": "023499516ef2ade14fbcdbe93fb81cc69458ae6cb3544614df8dbef34835b406",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 11213,
+                        "stable-only": true,
+                        "url-template": "https://github.com/sqlcipher/sqlcipher/archive/v$version.tar.gz"
+                    }
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "cp -p /usr/share/automake-*/config.{sub,guess} ."
+                    ]
+                },
+                {
+                    "type": "script",
+                    "dest-filename": "autogen.sh",
+                    "commands": [
+                        "AUTOMAKE=\"automake --foreign\" autoreconf -vfi"
+                    ]
+                }
+            ]
+        },
+        {
+            "config-opts": [
+                "-DQT4_BUILD=OFF",
+                "-DQCA_SUFFIX=qt5",
+                "-DENABLE_TESTING=OFF",
+                "-DCMAKE_INSTALL_LIBDIR=lib"
+            ],
+            "name": "qca",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/qca/2.3.4/qca-2.3.4.tar.xz",
+                    "sha256": "6b695881a7e3fd95f73aaee6eaeab96f6ad17e515e9c2b3d4b3272d7862ff5c4",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 13606,
+                        "stable-only": true,
+                        "url-template": "https://download.kde.org/stable/qca/$version/qca-$version.tar.xz"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "grantlee",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/steveire/grantlee/archive/v5.2.0.tar.gz",
+                    "sha256": "139acee5746b957bdf1327ec0d97c604d4c0b9be42aec5d584297cb5ed6a990a",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 21448,
+                        "stable-only": true,
+                        "url-template": "https://github.com/steveire/grantlee/archive/v$version.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "opensp",
+            "rm-configure": true,
+            "config-opts": [
+                "--disable-doc-build"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://downloads.sourceforge.net/project/openjade/opensp/1.5.2/OpenSP-1.5.2.tar.gz",
+                    "sha256": "57f4898498a368918b0d49c826aa434bb5b703d2c3b169beb348016ab25617ce",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 13231,
+                        "stable-only": true,
+                        "url-template": "https://downloads.sourceforge.net/project/openjade/opensp/$version/OpenSP-$version.tar.gz"
+                    }
+                },
+                {
+                    "type": "script",
+                    "dest-filename": "autogen.sh",
+                    "commands": [
+                        "autoreconf -vfi"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "gengetopt",
+            "rm-configure": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ftp.gnu.org/gnu/gengetopt/gengetopt-2.23.tar.xz",
+                    "sha256": "b941aec9011864978dd7fdeb052b1943535824169d2aa2b0e7eae9ab807584ac",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 892,
+                        "stable-only": true,
+                        "url-template": "https://ftp.gnu.org/gnu/gengetopt/gengetopt-$version.tar.xz"
+                    }
+                },
+                {
+                    "type": "script",
+                    "dest-filename": "autogen.sh",
+                    "commands": [
+                        "autoreconf -vfi"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "libofx",
+            "no-parallel-make": true,
+            "config-opts": [
+                "--with-opensp-includes=/app/include/OpenSP",
+                "--with-opensp-libs=/lib"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/libofx/libofx/archive/0.10.3.tar.gz",
+                    "sha256": "fe07cfd895fd79dcb9f45ca80a90ceaf1ebcc3b43b7e6d3fd7c3b2ae3bd8ba9e",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 7309,
+                        "stable-only": true,
+                        "url-template": "https://github.com/libofx/libofx/archive/$version.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "skrooge",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DENABLE_TESTING=OFF",
+                "-DSKG_BUILD_TEST=OFF",
+                "-DSKG_DESIGNER=OFF",
+                "-DQt5WebKit_DIR=/app/lib/cmake/Qt5WebKit/",
+                "-DQt5WebKitWidgets_DIR=/app/lib/cmake/Qt5WebKitWidgets/"
+            ],
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/skrooge/skrooge-2.27.0.tar.xz",
+                    "sha256": "c649745322440ce7983aaa977f7c2808331bf19c82d9ce428507431451116711",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 4826,
+                        "stable-only": true,
+                        "url-template": "https://download.kde.org/stable/skrooge/skrooge-$version.tar.xz"
+                    }
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -i '517i <release version=\"2.24.6\" date=\"2020-12-05\"/>' skrooge/org.kde.skrooge.appdata.xml"
+                    ]
+                }
+            ]
+        }
+    ]
 }
