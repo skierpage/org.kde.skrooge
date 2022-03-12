@@ -42,7 +42,13 @@
             {
                "type": "archive",
                "url": "https://downloads.sourceforge.net/project/tcl/Tcl/8.6.8/tcl8.6.8-src.tar.gz",
-               "sha256": "c43cb0c1518ce42b00e7c8f6eaddd5195c53a98f94adc717234a65cbcfd3f96a"
+               "sha256": "c43cb0c1518ce42b00e7c8f6eaddd5195c53a98f94adc717234a65cbcfd3f96a",
+               "x-checker-data": {
+						"type": "anitya",
+						"project-id": 4941,
+						"stable-only": true,
+						"url-template": "https://downloads.sourceforge.net/project/tcl/Tcl/$version/tcl$version-src.tar.gz"
+					}
             }
          ]
       },
@@ -63,7 +69,13 @@
             {
                "type": "archive",
                "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.3.0.tar.gz",
-               "sha256": "fccb37e440ada898902b294d02cde7af9e8706b185d77ed9f6f4d5b18b4c305f"
+               "sha256": "fccb37e440ada898902b294d02cde7af9e8706b185d77ed9f6f4d5b18b4c305f",
+               "x-checker-data": {
+						"type": "anitya",
+						"project-id": 11213,
+						"stable-only": true,
+						"url-template": "https://github.com/sqlcipher/sqlcipher/archive/v$version.tar.gz"
+					}
             },
             {
                "type": "shell",
@@ -93,7 +105,13 @@
             {
                "type": "archive",
                "url": "https://download.kde.org/stable/qca/2.3.4/qca-2.3.4.tar.xz",
-               "sha256": "6b695881a7e3fd95f73aaee6eaeab96f6ad17e515e9c2b3d4b3272d7862ff5c4"
+               "sha256": "6b695881a7e3fd95f73aaee6eaeab96f6ad17e515e9c2b3d4b3272d7862ff5c4",
+               "x-checker-data": {
+                  "type": "anitya",
+                  "project-id": 13606,
+                  "stable-only": true,
+                  "url-template": "https://download.kde.org/stable/qca/$version/qca-$version.tar.xz"
+              }
             }
          ]
       },
@@ -104,7 +122,13 @@
             {
                "type": "archive",
                "url": "https://github.com/steveire/grantlee/archive/v5.2.0.tar.gz",
-               "sha256": "139acee5746b957bdf1327ec0d97c604d4c0b9be42aec5d584297cb5ed6a990a"
+               "sha256": "139acee5746b957bdf1327ec0d97c604d4c0b9be42aec5d584297cb5ed6a990a",
+               "x-checker-data": {
+                  "type": "anitya",
+                  "project-id": 21448,
+                  "stable-only": true,
+                  "url-template": "https://github.com/steveire/grantlee/archive/v$version.tar.gz"
+              }
             }
          ]
       },
@@ -118,7 +142,13 @@
             {
                "type": "archive",
                "url": "https://downloads.sourceforge.net/project/openjade/opensp/1.5.2/OpenSP-1.5.2.tar.gz",
-               "sha256": "57f4898498a368918b0d49c826aa434bb5b703d2c3b169beb348016ab25617ce"
+               "sha256": "57f4898498a368918b0d49c826aa434bb5b703d2c3b169beb348016ab25617ce",
+               "x-checker-data": {
+                  "type": "anitya",
+                  "project-id": 13231,
+                  "stable-only": true,
+                  "url-template": "https://downloads.sourceforge.net/project/openjade/opensp/$version/OpenSP-$version.tar.gz"
+              }
             },
             {
                "type": "script",
@@ -136,7 +166,13 @@
             {
                "type": "archive",
                "url": "https://ftp.gnu.org/gnu/gengetopt/gengetopt-2.23.tar.xz",
-               "sha256": "b941aec9011864978dd7fdeb052b1943535824169d2aa2b0e7eae9ab807584ac"
+               "sha256": "b941aec9011864978dd7fdeb052b1943535824169d2aa2b0e7eae9ab807584ac",
+               "x-checker-data": {
+                  "type": "anitya",
+                  "project-id": 892,
+                  "stable-only": true,
+                  "url-template": "https://ftp.gnu.org/gnu/gengetopt/gengetopt-$version.tar.xz"
+              }
             },
             {
                "type": "script",
@@ -158,7 +194,13 @@
             {
                "type": "archive",
                "url": "https://github.com/libofx/libofx/archive/0.9.15.tar.gz",
-               "sha256": "74a9370da560526424ab62d79f7301f86620a8566c3f38cfc4684e63a4aac155"
+               "sha256": "74a9370da560526424ab62d79f7301f86620a8566c3f38cfc4684e63a4aac155",
+               "x-checker-data": {
+                  "type": "anitya",
+                  "project-id": 7309,
+                  "stable-only": true,
+                  "url-template": "https://github.com/libofx/libofx/archive/$version.tar.gz"
+              }
             }
          ]
       },
@@ -177,7 +219,13 @@
             {
                "type": "archive",
                "url": "https://download.kde.org/stable/skrooge/skrooge-2.24.6.tar.xz",
-               "sha256": "0d17889bd95cab48fbeb5c164e926eec79df116cfd42c446814b7255a5c5b3a0"
+               "sha256": "0d17889bd95cab48fbeb5c164e926eec79df116cfd42c446814b7255a5c5b3a0",
+               "x-checker-data": {
+                  "type": "anitya",
+                  "project-id": 4826,
+                  "stable-only": true,
+                  "url-template": "https://download.kde.org/stable/skrooge/skrooge-$version.tar.xz"
+              }
             },
             {
                "type": "shell",
