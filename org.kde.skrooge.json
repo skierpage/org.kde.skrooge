@@ -193,8 +193,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/libofx/libofx/archive/0.10.3.tar.gz",
-                    "sha256": "fe07cfd895fd79dcb9f45ca80a90ceaf1ebcc3b43b7e6d3fd7c3b2ae3bd8ba9e",
+                    "url": "https://github.com/libofx/libofx/archive/0.10.4.tar.gz",
+                    "sha256": "32c276b166c814cf93b7514cff1eea38d91aabf0639a10f1569cd7a6e45543ed",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 7309,
