@@ -1,0 +1,19 @@
+commit d7e5fcdddd31690a51acf55223e6d00cfb8a8412
+Author: Stephane MANKOWSKI <stephane@mankowski.fr>
+Date:   Sun Jan 22 22:47:37 2023 +0100
+
+    Modify default screenshot
+
+diff --git a/skrooge/org.kde.skrooge.appdata.xml b/skrooge/org.kde.skrooge.appdata.xml
+index 6053dcf33..18822d00c 100644
+--- a/skrooge/org.kde.skrooge.appdata.xml
++++ b/skrooge/org.kde.skrooge.appdata.xml
+@@ -559,7 +559,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
+       <caption xml:lang="sv">Standardskärmbilden</caption>
+       <caption xml:lang="uk">Типовий знімок вікна</caption>
+       <caption xml:lang="x-test">xxThe default screenshotxx</caption>
+-      <image>https://skrooge.org/sites/skrooge.org/files//images/skrooge_screenshot_16x9_0.png</image>
++      <image>https://cdn.kde.org/screenshots/skrooge/skrooge-dashboard.png</image>
+     </screenshot>
+   </screenshots>
+   <project_group>KDE</project_group>

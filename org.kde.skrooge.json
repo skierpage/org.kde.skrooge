@@ -232,6 +232,10 @@
                     }
                 },
                 {
+                    "type": "patch",
+                    "path": "screenshot.patch"
+                },
+                {
                     "type": "shell",
                     "commands": [
                         "sed -i '517i <release version=\"2.24.6\" date=\"2020-12-05\"/>' skrooge/org.kde.skrooge.appdata.xml"
