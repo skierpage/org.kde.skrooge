@@ -1,0 +1,60 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a1a9011de..32f0e139e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,20 +4,11 @@
+ #* SPDX-License-Identifier: GPL-3.0-or-later
+ #***************************************************************************
+ MESSAGE( STATUS "..:: CMAKE ROOT ::..")
+-set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
+ PROJECT(skrooge)
+ 
+ 
+-SET(QT_MIN_VERSION "5.12.0")
+-IF (CMAKE_PREFIX_PATH)
+-ELSE (CMAKE_PREFIX_PATH)
+-    SET(CMAKE_PREFIX_PATH "/usr/lib/x86_64-linux-gnu/cmake")
+-ENDIF  (CMAKE_PREFIX_PATH)
+-IF (CMAKE_LIBRARY_ARCHITECTURE)
+-ELSE (CMAKE_LIBRARY_ARCHITECTURE)
+-    SET(CMAKE_LIBRARY_ARCHITECTURE "x86_64-linux-gnu")
+-ENDIF (CMAKE_LIBRARY_ARCHITECTURE)
+-MESSAGE( STATUS "     CMAKE_LIBRARY_ARCHITECTURE   :  " ${CMAKE_LIBRARY_ARCHITECTURE})
++SET (QT_MIN_VERSION "5.12.0")
++#SET (QT_MIN_VERSION "5.15.0")
+ 
+ # QT6 MIGRATION
+ #add_compile_definitions(QT_DISABLE_DEPRECATED_BEFORE=0x050F00)
+@@ -53,27 +44,27 @@ INCLUDE(ECMGenerateHeaders)
+ INCLUDE(CMakePackageConfigHelpers)
+ INCLUDE(KDEFrameworkCompilerSettings)
+ 
+-FIND_PACKAGE(Qt5 ${QT_MIN_VERSION} NO_MODULE REQUIRED Core Widgets Script Sql Test PrintSupport Svg Xml Concurrent Qml QuickWidgets)
++FIND_PACKAGE(Qt5 ${QT_MIN_VERSION} REQUIRED Core Widgets Script Sql Test PrintSupport Svg Xml Concurrent Qml QuickWidgets)
+ 
+ IF(SKG_WEBENGINE)
+-    FIND_PACKAGE(Qt5 ${QT_MIN_VERSION} NO_MODULE REQUIRED WebEngineWidgets)
++    FIND_PACKAGE(Qt5 ${QT_MIN_VERSION} REQUIRED WebEngineWidgets)
+     IF(SKG_WEBKIT)
+         MESSAGE( FATAL_ERROR "You can not use both SKG_WEBENGINE and SKG_WEBKIT. You have to enable one and disable the other." )
+     ENDIF(SKG_WEBKIT)
+ ENDIF(SKG_WEBENGINE)
+ IF(SKG_WEBKIT)
+-    FIND_PACKAGE(Qt5 ${QT_MIN_VERSION} NO_MODULE REQUIRED WebKitWidgets)
++    FIND_PACKAGE(Qt5 ${QT_MIN_VERSION} REQUIRED WebKitWidgets)
+ ENDIF(SKG_WEBKIT)
+ 
+ IF(SKG_DBUS)
+     MESSAGE( STATUS "     DBUS enabled")
+-    FIND_PACKAGE(Qt5 ${QT_MIN_VERSION} NO_MODULE REQUIRED DBus)
++    FIND_PACKAGE(Qt5 ${QT_MIN_VERSION} REQUIRED DBus)
+ ELSE(SKG_DBUS)
+     MESSAGE( STATUS "     DBUS disabled")
+ ENDIF(SKG_DBUS)
+ 
+ IF(SKG_DESIGNER)
+-  FIND_PACKAGE(Qt5 ${QT_MIN_VERSION} NO_MODULE REQUIRED Designer )
++  FIND_PACKAGE(Qt5 ${QT_MIN_VERSION} REQUIRED Designer )
+   FIND_PACKAGE(KF5 5.0.0 REQUIRED COMPONENTS
+     DesignerPlugin        # Tier 3
+   )  
