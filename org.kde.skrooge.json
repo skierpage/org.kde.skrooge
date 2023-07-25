@@ -4,7 +4,7 @@
     "runtime": "org.kde.Platform",
     "runtime-version": "5.15-22.08",
     "sdk": "org.kde.Sdk",
-    "base": "io.qt.qtwebkit.BaseApp",
+    "base": "io.qt.qtwebengine.BaseApp",
     "base-version": "5.15-22.08",
     "command": "skrooge",
     "rename-icon": "skrooge",
@@ -104,8 +104,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/stable/qca/2.3.6/qca-2.3.6.tar.xz",
-                    "sha256": "ee59d531d4b82fb1685f4d8d74c2caa0777f501800f7426eaa372109a4305249",
+                    "url": "https://download.kde.org/stable/qca/2.3.7/qca-2.3.7.tar.xz",
+                    "sha256": "fee2343b54687d5be3e30fb33ce296ee50ac7ae5e23d7ab725f63ffdf7af3f43",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 13606,
@@ -216,18 +216,14 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/stable/skrooge/skrooge-2.29.0.tar.xz",
-                    "sha256": "e7c62be4ca4909a0f7d411d305231f36688ed56e65ba87859ace67554e55e37c",
+                    "url": "https://download.kde.org/stable/skrooge/skrooge-2.30.0.tar.xz",
+                    "sha256": "8a503ff6cfed63df572f14544373e15a9202e5c230f6894ea178e8f969c404fd",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 4826,
                         "stable-only": true,
                         "url-template": "https://download.kde.org/stable/skrooge/skrooge-$version.tar.xz"
                     }
-                },
-                {
-                    "type": "patch",
-                    "path": "cmake.patch"
                 }
             ]
         }
