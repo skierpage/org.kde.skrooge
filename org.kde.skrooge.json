@@ -68,8 +68,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.5.5.tar.gz",
-                    "sha256": "014ef9d4f5b5f4e7af4d93ad399667947bb55e31860e671f0def1b8ae6f05de0",
+                    "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.5.6.tar.gz",
+                    "sha256": "e4a527e38e67090c1d2dc41df28270d16c15f7ca5210a3e7ec4c4b8fda36e28f",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 11213,
@@ -104,8 +104,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/stable/qca/2.3.7/qca-2.3.7.tar.xz",
-                    "sha256": "fee2343b54687d5be3e30fb33ce296ee50ac7ae5e23d7ab725f63ffdf7af3f43",
+                    "url": "https://download.kde.org/stable/qca/2.3.8/qca-2.3.8.tar.xz",
+                    "sha256": "48759ca86a0202461d908ba66134380cc3bb7d20fed3c031b9fc0289796a8264",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 13606,
