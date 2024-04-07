@@ -216,8 +216,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/stable/skrooge/skrooge-2.31.0.tar.xz",
-                    "sha256": "4bdd2c50a26453080f006948bb2374e5ae43a1e85316914e9d52cc17c01cf872",
+                    "url": "https://download.kde.org/stable/skrooge/skrooge-2.32.0.tar.xz",
+                    "sha256": "b508694bd579fd3fd1cd686940eae88c1cedd3b1c2f34d0fbedb63cef5adbd0a",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 4826,
