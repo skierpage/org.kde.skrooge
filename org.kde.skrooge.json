@@ -68,8 +68,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.5.7.tar.gz",
-                    "sha256": "b670845f28da0a3c717e991e9f18a334e08f6bc977190bbce6be864ca229f96d",
+                    "url": "https://github.com/sqlcipher/sqlcipher/archive/v4.6.0.tar.gz",
+                    "sha256": "879fb030c36bc5138029af6aa3ae3f36c28c58e920af05ac7ca78a5915b2fa3c",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 11213,
