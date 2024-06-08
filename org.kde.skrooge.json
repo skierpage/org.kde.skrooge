@@ -93,29 +93,6 @@
             ]
         },
         {
-            "config-opts": [
-                "-DQT4_BUILD=OFF",
-                "-DQCA_SUFFIX=qt5",
-                "-DENABLE_TESTING=OFF",
-                "-DCMAKE_INSTALL_LIBDIR=lib"
-            ],
-            "name": "qca",
-            "buildsystem": "cmake-ninja",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/qca/2.3.8/qca-2.3.8.tar.xz",
-                    "sha256": "48759ca86a0202461d908ba66134380cc3bb7d20fed3c031b9fc0289796a8264",
-                    "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": 13606,
-                        "stable-only": true,
-                        "url-template": "https://download.kde.org/stable/qca/$version/qca-$version.tar.xz"
-                    }
-                }
-            ]
-        },
-        {
             "name": "grantlee",
             "buildsystem": "cmake-ninja",
             "sources": [
