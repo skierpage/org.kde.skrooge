@@ -1,0 +1,24 @@
+From 5727fe36b4af2bb1f98c237a8f879977a874d021 Mon Sep 17 00:00:00 2001
+From: Justin Zobel <justin.zobel@gmail.com>
+Date: Sat, 19 Oct 2024 16:58:57 +1030
+Subject: [PATCH] Appdata
+
+---
+ skrooge/org.kde.skrooge.appdata.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/skrooge/org.kde.skrooge.appdata.xml b/skrooge/org.kde.skrooge.appdata.xml
+index 6861ea1..5d3abae 100644
+--- a/skrooge/org.kde.skrooge.appdata.xml
++++ b/skrooge/org.kde.skrooge.appdata.xml
+@@ -589,6 +589,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
+   <update_contact>stephane@mankowski.fr</update_contact>
+   <content_rating type="oars-1.1"/>
+   <releases>
++    <release version="2.33.0" date="2024-09-22"/>
+     <release version="2.32.0" date="2024-04-02"/>
+     <release version="2.31.0" date="2023-10-02"/>
+     <release version="2.30.0" date="2023-06-25"/>
+-- 
+2.47.0
+
