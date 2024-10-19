@@ -224,6 +224,10 @@
                         "stable-only": true,
                         "url-template": "https://download.kde.org/stable/skrooge/skrooge-$version.tar.xz"
                     }
+                },
+                {
+                     "type": "patch",
+                     "path": "appdata.patch"
                 }
             ]
         }
