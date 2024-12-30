@@ -21,7 +21,7 @@
     ],
     "finish-args": [
         "--share=ipc",
-        "--socket=x11",
+        "--socket=fallback-x11",
         "--socket=wayland",
         "--socket=pulseaudio",
         "--device=dri",
@@ -92,29 +92,6 @@
                     "commands": [
                         "AUTOMAKE=\"automake --foreign\" autoreconf -vfi"
                     ]
-                }
-            ]
-        },
-        {
-            "config-opts": [
-                "-DQT4_BUILD=OFF",
-                "-DQCA_SUFFIX=qt5",
-                "-DENABLE_TESTING=OFF",
-                "-DCMAKE_INSTALL_LIBDIR=lib"
-            ],
-            "name": "qca",
-            "buildsystem": "cmake-ninja",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.kde.org/stable/qca/2.3.9/qca-2.3.9.tar.xz",
-                    "sha256": "c555d5298cdd7b6bafe2b1f96106f30cfa543a23d459d50c8a91eac33c476e4e",
-                    "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": 13606,
-                        "stable-only": true,
-                        "url-template": "https://download.kde.org/stable/qca/$version/qca-$version.tar.xz"
-                    }
                 }
             ]
         },
